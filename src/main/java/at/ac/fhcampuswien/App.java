@@ -5,8 +5,40 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class App {
-    public static void oneMonthCalendar(int numberOfDays, int firstDay){
-
+    public static void oneMonthCalendar(int numberOfDays, int firstDay) {
+        int place = 1;
+        int day = 0;
+        while (place <= 7) {
+            if (place < firstDay) {
+                System.out.print("   ");
+            } else {
+                day++;
+                System.out.print(" " + day + " ");
+            }
+            place++;
+        }
+        System.out.println();
+        while (day < numberOfDays) {
+            day++;
+            if (place % 7 == 0) {
+                if (day < 10) {
+                    System.out.print(" " + day + " ");
+                } else {
+                    System.out.print(day + " ");
+                }
+                System.out.println();
+            } else {
+                if (day < 10) {
+                    System.out.print(" " + day + " ");
+                } else {
+                    System.out.print(day + " ");
+                }
+            }
+            place++;
+        }
+        if ((place - 1) % 7 != 0) {
+            System.out.println();
+        }
     }
 
     public static long[] lcg(long seed){
@@ -57,8 +89,21 @@ public class App {
     }
 
     public static boolean swapArrays(int[] array1, int[] array2){
+        boolean out;
+        int[] temp = new int[array1.length];
 
-        return false;
+        if(array1.length == array2.length){
+            for(int i = 0; i < array1.length; i++) {
+                temp[i] = array1[i];
+                array1[i] = array2[i];
+                array2[i] = temp[i];
+            }
+            out = true;
+        }else{
+            out = false;
+        }
+
+        return out;
     }
 
     public static String camelCase(String input){
